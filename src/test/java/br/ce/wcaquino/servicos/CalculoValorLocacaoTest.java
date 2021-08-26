@@ -52,6 +52,7 @@ public class CalculoValorLocacaoTest {
 	private static Filme filme4 = new Filme("Filme 4", 2, 4.0);
 	private static Filme filme5 = new Filme("Filme 5", 2, 4.0);
 	private static Filme filme6 = new Filme("Filme 6", 2, 4.0);
+	private static Filme filme7 = new Filme("Filme 7", 2, 4.0);
 	
 	//Definir o conjunto de dados que será testado
 	//Os dados utilizados no teste devem ficar em um array
@@ -59,10 +60,12 @@ public class CalculoValorLocacaoTest {
 	@Parameters(name="{2}") //name="Teste {index} = {2} - {1}" é como será impresso os parâmetros 1 e 2.
 	public static Collection<Object[]> getParametros() {
 		return Arrays.asList(new Object[][] {
+			{Arrays.asList(filme1, filme2), 8.0, "2 Filmes: Sem Desconto"},
 			{Arrays.asList(filme1, filme2, filme3), 11.0, "3 Filmes: 25%"},
 			{Arrays.asList(filme1, filme2, filme3, filme4), 13.0, "4 Filmes: 50%"},
 			{Arrays.asList(filme1, filme2, filme3, filme4, filme5), 14.0, "5 Filmes: 75%"},
-			{Arrays.asList(filme1, filme2, filme3, filme4, filme5, filme6), 14.0, "6 Filmes: 100%"}
+			{Arrays.asList(filme1, filme2, filme3, filme4, filme5, filme6), 14.0, "6 Filmes: 100%"},
+			{Arrays.asList(filme1, filme2, filme3, filme4, filme5, filme6, filme7), 18.0, "7 Filmes: Sem Desconto"}
 		});
 	}
 	
@@ -83,8 +86,4 @@ public class CalculoValorLocacaoTest {
 		assertThat(locacao.getValor(), is(valorLocacao));		
 	}
 	
-	@Test
-	public void print() {
-		System.out.println("Valor Locação: " + valorLocacao);
-	}
 }
